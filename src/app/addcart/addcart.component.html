@@ -1,6 +1,7 @@
 ﻿    
               <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2  col-lg-offset-3" role="main">
-                <form role="form" action="" method="post">
+                <!-- <form  name="form" #f="ngForm" (ngSubmit)="addCheckOut()" role="form" action="" method="post"> -->
+                    <form  name="form" #f="ngForm"  role="form" action="" method="post">
                   <div class="x_panel">
                     <!-- <div class="page-title">
                       <div class="title_left">
@@ -125,19 +126,32 @@
                               </div> -->
                               <br />
         
-                              <div class="">
-                                <div class="product_price">
-                                  <h1 class="price">{{this.product.productPrice}}</h1>
-                                  <span class="price-tax">Ex Tax: {{this.product.productPrice}}</span>
-                                  <br>
-                                </div>
-                              </div>
+                              
         
                               <div class="">
-                                <button  (click)="redirect(this.product)" type="button" class="btn btn-default btn-lg">Add to Cart</button>
+                                <!-- <button type="submit" class="btn btn-default btn-lg">Add to Cart</button> -->
+                                <button  (click)="addProduct(product)" type="button" class="btn btn-default btn-lg">Add to Cart</button>
                                 <button type="button" class="btn btn-default btn-lg">Add to Wishlist</button>
                               </div>
-        
+
+
+                                <div class="" >
+                                  <div class="added_product">
+                                    <h1 class="product_total">{{product.productPrice}}</h1>
+                                    <span class="price-tax"> {{product.productPrice}} Products are added in Cart</span>
+                                    <button  (click)="proceedToPay(product)" type="button" class="btn btn-default btn-lg"><span class="price-tax">Proceed to Pay</span></button>
+                                    <br>
+                                  </div>
+                                </div>
+
+                                <!-- <div class="" *ngIf="showProductInfo" >
+                                    <div class="product_price" >
+                                      <h1 class="price">{{product.productPrice}}</h1>
+                                      <span class="price-tax">Ex Tax: {{product.productPrice}}</span>
+                                      <br>
+                                    </div>
+                                  </div> -->
+
                               <div class="product_social">
                                 <ul class="list-inline">
                                   <li><a href="#"><i class="fa fa-facebook-square"></i></a>
@@ -156,7 +170,7 @@
         
                             <div class="col-md-12">
         
-                              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                              <div class="" role="tabpanel" data-example-id="togglable-tabs" >
                                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                   <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Home</a>
                                   </li>
@@ -165,12 +179,12 @@
                                   <!-- <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
                                   </li> -->
                                 </ul>
-                                <div id="myTabContent" class="tab-content">
+                                <div  id="myTabContent" class="tab-content" >
                                   <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-                                    <p>{{this.product.productName}} shown here are brand new and avaialable in the market </p>
+                                    <p>{{product.productName}} shown here are brand new and avaialable in the market </p>
                                  </div>
                                   <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                                    <p>{{this.product.productName}} shown here is the latest one and best price for you to buy </p>
+                                    <p>{{product.productName}} shown here is the latest one and best price for you to buy </p>
                                   </div>
                                   <!-- <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                                     <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui

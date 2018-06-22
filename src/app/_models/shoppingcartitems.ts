@@ -1,4 +1,5 @@
 export class ShoppingCartItems {
+    shoppingcartitemsId: number;
     shoppingcartId: number;
     productName: string;
     customerId: number;

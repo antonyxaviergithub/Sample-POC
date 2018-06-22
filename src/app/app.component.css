@@ -5,3 +5,14 @@ a {
 .help-block {
     font-size: 12px;
 }
+
+.text-white{
+    color: #ffffff;
+}
+
+ul.msg_list li {
+    background:none;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
+    background-color: #161616;
+}

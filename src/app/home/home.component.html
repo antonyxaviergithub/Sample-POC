@@ -32,11 +32,9 @@
                                       <th>Price</th>
                                     </tr>
                                   </thead>
-            
-            
                                   <tbody>
                                           <tr *ngFor="let product of products">
-                                              <td><a [routerLink]="['/addcart', {id:product.productId}]">{{product.productId}}</a></td>
+                                              <td><a [routerLink]="['/addcart', {proId:product.productId}]">{{product.productId}}</a></td>
                                               <td>{{product.productName}}</td>
                                               <td>{{product.productDescription}}</td>
                                               <td>{{product.productPrice}}</td>                                              

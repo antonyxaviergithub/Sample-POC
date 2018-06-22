@@ -3404,6 +3404,21 @@ a {
     text-align: left;
     border: 2px dashed #E0E0E0;
   }
+
+  .added_product {
+    margin: 20px 0;
+    padding: 5px 10px;
+    background-color: #FFFFFF;
+    text-align: left;
+    border: 2px dashed #E0E0E0;
+  }
+
+  .product_total {
+    font-size: 40px;
+    font-weight: 400;
+    color: #26B99A;
+    margin: 0;
+  }
   .price-tax {
     font-size: 18px;
   }

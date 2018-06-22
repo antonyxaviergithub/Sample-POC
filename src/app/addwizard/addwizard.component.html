@@ -10,65 +10,127 @@
                   <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2  col-lg-offset-3 form-wizard">
         
           <!-- Form Wizard -->
-                    <form role="form" action="" method="post">
+                    <form role="form"  action="" method="post" >
                       <div class="title_left">
                         <h4>Payment Process</h4>
                           <p>Fill all form field to proceed further</p>
                       </div>
-            <!-- Form progress -->
-                      <div class="form-wizard-steps form-wizard-tolal-steps-2">
+           
+                      <!-- <div class="form-wizard-steps form-wizard-tolal-steps-2">
                         <div class="form-wizard-progress">
                             <div class="form-wizard-progress-line" data-now-value="12.25" data-number-of-steps="2" style="width: 12.25%;"></div>
                         </div>
-              <!-- Step 1 -->
+            
                         <div class="form-wizard-step active">
                           <div class="form-wizard-step-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
                           <p>Shipping </p>
                         </div>
-              <!-- Step 1 -->
-                            
-              <!-- Step 4 -->
-                        <div class="form-wizard-step">
+             
+                        <div class="form-wizard-step active">
                           <div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
                           <p>Payment</p>
                         </div>
-              <!-- Step 4 -->
-                      </div>
-            <!-- Form progress -->
+             
+                      </div> -->
+            
                       
             
             <!-- Form Step 1 -->
                       
-            <fieldset>
-
+            <div *ngIf="showContactForm">
+                <div class="form-wizard-steps form-wizard-tolal-steps-2">
+                    <div class="form-wizard-progress">
+                        <div class="form-wizard-progress-line" data-now-value="12.25" data-number-of-steps="2" style="width: 12.25%;"></div>
+                    </div>
+          <!-- Step 1 -->
+                    <div class="form-wizard-step active">
+                      <div class="form-wizard-step-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
+                      <p>Shipping </p>
+                    </div>
+          <!-- Step 1 -->
+                        
+          <!-- Step 4 -->
+                    <div class="form-wizard-step ">
+                      <div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                      <p>Payment</p>
+                    </div>
+          <!-- Step 4 -->
+                  </div>
+                  <form #regsiterForm="ngForm" (ngSubmit)="register(regsiterForm.value)">
+                  <h4>Contact & Shipping Information : <span>Step 1 - 2</span></h4>
+                    
+                    <!-- <input type="text" required name="email" [(ngModel)]="email"> -->
+                    <div class="form-group">
+                    <label>Email: <span>*</span></label>
+                    <input type="email"  name="email" [(ngModel)]="email"  class="form-control " required >
+                    </div>
+                    <div class="form-group">
+                        <label>Phone: <span>*</span></label>
+                              <input type="text" name="phone" [(ngModel)]="phone"  class="form-control " required>
+                          </div>
+                          <div class="form-group">
+                          <label>Address: <span>*</span></label>
+                              <input type="text"  name="address" [(ngModel)]="address" class="form-control " required >
+                          </div>
+                          <div class="form-group">
+                                        <label>Zip Code: <span>*</span></label>
+                                              <input type="text"  name="zipCode" [(ngModel)]="zipCode"   class="form-control " required>
+                                          </div>
+                          <div class="form-group" >
+                                        <label>City: <span>*</span></label>
+                                              <input type="text" name="city" [(ngModel)]="city"  class="form-control " required >
+                                          </div>
+                          <div class="form-group">
+                                        <label>State: <span>*</span></label>
+                                              <input type="text" name="state" [(ngModel)]="state"  class="form-control " required>
+                                          </div>
+                          <div class="form-group">
+                                        <label>Country: </label>
+                                              <select class="form-control" name="country" [(ngModel)]="country" >
+                              <option>Australia</option>
+                              <option>America</option>
+                              <option>Bangladesh</option>
+                              <option>Canada</option>
+                              <option>England</option>
+                            </select>
+                                          </div>
+          
+                          <div class="form-wizard-buttons">
+                              <!-- <button type="button" class="btn btn-previous">Previous</button>  -->
+                              <button (click)="redirect()" type="button" class="btn btn-previous">Back</button>
+                              <button type="submit" class="btn btn-next">Next</button>
+                          </div>
+                    <!-- <button type="submit">submit</button> -->
+                  </form>
+              <!-- <form  [formGroup]="contactform"  (ngSubmit)="next(contactform)" >
                 <h4>Contact & Shipping Information : <span>Step 1 - 2</span></h4>
                 <div class="form-group">
               <label>Email: <span>*</span></label>
-                    <input type="email" name="Email" placeholder="Email" class="form-control required">
+                    <input type="email" id="email" [formControlName]="email" name="email" placeholder="" class="form-control " required >
                 </div>
                 <div class="form-group">
               <label>Phone: <span>*</span></label>
-                    <input type="text" name="Phone" placeholder="Phone" class="form-control required">
+                    <input type="text" [formControlName]="phone" placeholder="" class="form-control " required>
                 </div>
                 <div class="form-group">
                 <label>Address: <span>*</span></label>
-                    <input type="text" name="Address" placeholder="Address" class="form-control required">
+                    <input type="text" [formControlName]="address" placeholder="" class="form-control " required >
                 </div>
                 <div class="form-group">
                               <label>Zip Code: <span>*</span></label>
-                                    <input type="text" name="Zip Code" placeholder="Zip Code" class="form-control required">
+                                    <input type="text" [formControlName]="zipCode" placeholder="" class="form-control " required>
                                 </div>
-                <div class="form-group">
+                <div class="form-group" >
                               <label>City: <span>*</span></label>
-                                    <input type="text" name="City" placeholder="City" class="form-control required">
+                                    <input type="text" [formControlName]="city" placeholder="" class="form-control " required >
                                 </div>
                 <div class="form-group">
                               <label>State: <span>*</span></label>
-                                    <input type="text" name="State" placeholder="State" class="form-control required">
+                                    <input type="text" [formControlName]="state" placeholder="" class="form-control " required>
                                 </div>
                 <div class="form-group">
                               <label>Country: </label>
-                                    <select class="form-control">
+                                    <select class="form-control" [formControlName]="country">
                     <option>Australia</option>
                     <option>America</option>
                     <option>Bangladesh</option>
@@ -78,44 +140,63 @@
                                 </div>
 
                 <div class="form-wizard-buttons">
-                    <!-- <button type="button" class="btn btn-previous">Previous</button> -->
+                     <button type="button" class="btn btn-previous">Previous</button> 
                     <button (click)="redirect(''+5)" type="button" class="btn btn-previous">Back</button>
-                    <button type="button" class="btn btn-next">Next</button>
+                    <button type="submit" class="btn btn-next">Next</button>
                 </div>
-            </fieldset>
+              </form> -->
+              </div>
              
-            <fieldset>
-
+            <div *ngIf="showpaymentForm">
+                <div class="form-wizard-steps form-wizard-tolal-steps-2">
+                    <div class="form-wizard-progress">
+                        <div class="form-wizard-progress-line" data-now-value="12.25" data-number-of-steps="2" style="width: 12.25%;"></div>
+                    </div>
+          <!-- Step 1 -->
+                    <div class="form-wizard-step active">
+                      <div class="form-wizard-step-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></div>
+                      <p>Shipping </p>
+                    </div>
+          <!-- Step 1 -->
+                        
+          <!-- Step 4 -->
+                    <div class="form-wizard-step active">
+                      <div class="form-wizard-step-icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                      <p>Payment</p>
+                    </div>
+          <!-- Step 4 -->
+                  </div>
+              <form #paymentform="ngForm" (ngSubmit)="onSubmitPayment(paymentform.value)">
                               <h4>Payment Information: <span>Step 2 - 2</span></h4>
               <div style="clear:both;"></div>
               <div class="form-group">
                             <label>Bank Name: <span>*</span></label>
-                                  <input type="text" name="Bank Name" placeholder="Bank Name" class="form-control required">
+                                  <input type="text" name="bankName" [(ngModel)]="bankName" class="form-control " required>
                               </div>
                         <div class="form-group">
                             <label>Payment Type : </label>
-                                  <label class="radio-inline">
-                  <input type="radio" name="Payment" value="option1" checked="checked"> Master Card
+                                  <label class="radio-inline"> 
+                  <input type="radio" name="payment" [(ngModel)]="payment" value="option1" checked="checked"  > Master Card
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="Payment" value="option2"> Visa Card
+                  <input type="radio" name="payment" [(ngModel)]="payment" value="option2" > Visa Card
                 </label>
                               </div>
                               <div class="form-group">
                             <label>Holder Name: <span>*</span></label>
-                                  <input type="text" name="Holder Name" placeholder="Holder Name" class="form-control required">
+                                  <input type="text" name="holderName" [(ngModel)]="holderName"  class="form-control " required >
                               </div>
               <div class="container-fluid">
               <div class="row form-inline">
               <div class="form-group col-md-6 col-xs-6">
                 <label>Card Number: <span>*</span></label>
-                                  <input type="text" name="Card Number" placeholder="Card Number" class="form-control required">
+                                  <input type="text" name="cardNumber" [(ngModel)]="cardNumber"  class="form-control " required >
               </div>
               <div class="form-group col-md-6 col-xs-6">
                 <label>CVC: <span>*</span></label>
-                                  <input type="text" name="CVC" placeholder="CVC" class="form-control required">
+                                  <input type="text" name="cvc" [(ngModel)]="cvc"  class="form-control " required >
               </div>
-                              </div>
+              </div>
               </div>
               <br/>
               <div class="container-fluid">
@@ -125,7 +206,7 @@
               </div>
               <div class="form-group col-md-3 col-xs-3">
                 <label>Month: </label>
-                  <select class="form-control">
+                  <select class="form-control"   name="expiryMon" [(ngModel)]="expiryMon"  >
                   <option>Jan</option>
                   <option>Feb</option>
                   <option>Mar</option>
@@ -142,7 +223,7 @@
               </div>
               <div class="form-group col-md-3 col-xs-3">
                 <label>Year: </label>
-                  <select class="form-control">
+                  <select class="form-control" name="expiryYear" [(ngModel)]="expiryYear" >
                   <option>2017</option>
                   <option>2018</option>
                   <option>2019</option>
@@ -153,11 +234,12 @@
                               </div>
               </div>
               <br/>
-                              <div class="form-wizard-buttons">
-                                  <button type="button" class="btn btn-previous">Previous</button>
-                                  <button type="submit" class="btn btn-submit">Submit</button>
-                              </div>
-            </fieldset>
+                <div class="form-wizard-buttons">
+                    <button type="button" (click)="previous()" class="btn btn-previous">Previous</button>
+                    <button type="submit"  class="btn btn-submit">Submit</button>
+                </div>
+              </form>  
+              </div>
             <!-- Form Step 4 -->
                     
                     </form>
